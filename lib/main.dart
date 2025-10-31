@@ -34,6 +34,28 @@ class HomePage extends StatelessWidget {
     final String userName =
         ModalRoute.of(context)!.settings.arguments as String? ?? 'Usuário';
 
+    // 🛍️ Lista de produtos em oferta (exemplo)
+    final List<Map<String, dynamic>> ofertas = [
+      {
+        "name": "Hidratante Facial",
+        "image": "assets/imagem_pele_1.jpg",
+        "oldPrice": 59.90,
+        "newPrice": 39.90,
+      },
+      {
+        "name": "Máscara Capilar",
+        "image": "assets/imagem_cabelo_2.jpg",
+        "oldPrice": 79.90,
+        "newPrice": 49.90,
+      },
+      {
+        "name": "Perfume Body Splash",
+        "image": "assets/imagem_corpo_1.jpg",
+        "oldPrice": 89.90,
+        "newPrice": 59.90,
+      },
+    ];
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -53,7 +75,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Saudação estilosa 👋
+                  // Saudação 👋
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -62,7 +84,7 @@ class HomePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Olá, $userName 👋",
+                              "Olá, $userName ",
                               style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -72,7 +94,7 @@ class HomePage extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             const Text(
-                              "Seja bem-vindo(a) à Lustrious ✨",
+                              "Seja bem-vindo(a) à Lustrious ",
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Color(0xFF7A6A57),
@@ -95,46 +117,94 @@ class HomePage extends StatelessWidget {
 
                   const SizedBox(height: 25),
 
-                  // Carrossel de Categorias 🌀
+                  // 🌀 Carrossel de Categorias
                   const CategoryCarrossel(),
 
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 30),
 
-                  // Seção destaque
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.85),
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 10,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
+                  // 🛍️ Seção de Ofertas Especiais
+                  const Text(
+                    "Ofertas Especiais ",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF5A4633),
                     ),
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "💎 Novidades e Ofertas",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF5A4633),
+                  ),
+                  const SizedBox(height: 12),
+
+                  SizedBox(
+                    height: 240,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: ofertas.length,
+                      itemBuilder: (context, index) {
+                        final oferta = ofertas[index];
+                        return Container(
+                          width: 160,
+                          margin: const EdgeInsets.only(right: 14),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.9),
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.08),
+                                blurRadius: 6,
+                                offset: const Offset(2, 4),
+                              ),
+                            ],
                           ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          "Confira os produtos mais desejados e promoções exclusivas!",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Color(0xFF7A6A57),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.vertical(
+                                    top: Radius.circular(16)),
+                                child: Image.asset(
+                                  oferta["image"],
+                                  height: 130,
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      oferta["name"],
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Color(0xFF5A4633),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 6),
+                                    Text(
+                                      "De R\$${oferta["oldPrice"].toStringAsFixed(2)}",
+                                      style: const TextStyle(
+                                        fontSize: 13,
+                                        color: Colors.grey,
+                                        decoration:
+                                            TextDecoration.lineThrough,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Por R\$${oferta["newPrice"].toStringAsFixed(2)}",
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.pink,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                        );
+                      },
                     ),
                   ),
 
