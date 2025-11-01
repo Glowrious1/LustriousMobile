@@ -77,6 +77,7 @@ class CategoryCarrossel extends StatelessWidget {
             ),
           );
         }).toList(),
+        
       ),
     );
   }

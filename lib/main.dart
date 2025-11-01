@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
     final String userName =
         ModalRoute.of(context)!.settings.arguments as String? ?? 'Usuário';
 
-    // 🛍️ Lista de produtos em oferta (exemplo)
+    // Lista de produtos em oferta
     final List<Map<String, dynamic>> ofertas = [
       {
         "name": "Hidratante Facial",
@@ -61,8 +61,8 @@ class HomePage extends StatelessWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFFFDF3E7), // tom claro
-              Color(0xFFF0D6A9), // tom dourado suave
+              Color(0xFFFDF3E7),
+              Color(0xFFF0D6A9),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -70,12 +70,13 @@ class HomePage extends StatelessWidget {
         ),
         child: SafeArea(
           child: SingleChildScrollView(
+            padding: const EdgeInsets.only(bottom: 220),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Saudação 👋
+                  // Saudação
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -117,12 +118,12 @@ class HomePage extends StatelessWidget {
 
                   const SizedBox(height: 25),
 
-                  // 🌀 Carrossel de Categorias
+                  // Carrossel de Categorias
                   const CategoryCarrossel(),
 
                   const SizedBox(height: 30),
 
-                  // 🛍️ Seção de Ofertas Especiais
+                  // Ofertas Especiais
                   const Text(
                     "Ofertas Especiais ",
                     style: TextStyle(
@@ -133,16 +134,13 @@ class HomePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
 
-                  SizedBox(
-                    height: 240,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: ofertas.length,
-                      itemBuilder: (context, index) {
-                        final oferta = ofertas[index];
-                        return Container(
-                          width: 160,
-                          margin: const EdgeInsets.only(right: 14),
+                  // Row com 3 imagens responsivas
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: ofertas.map((oferta) {
+                      return Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 4),
                           decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.9),
                             borderRadius: BorderRadius.circular(16),
@@ -155,16 +153,17 @@ class HomePage extends StatelessWidget {
                             ],
                           ),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              ClipRRect(
-                                borderRadius: const BorderRadius.vertical(
-                                    top: Radius.circular(16)),
-                                child: Image.asset(
-                                  oferta["image"],
-                                  height: 130,
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
+                              AspectRatio(
+                                aspectRatio: 1,
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(16)),
+                                  child: Image.asset(
+                                    oferta["image"],
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                               Padding(
@@ -180,14 +179,13 @@ class HomePage extends StatelessWidget {
                                         color: Color(0xFF5A4633),
                                       ),
                                     ),
-                                    const SizedBox(height: 6),
+                                    const SizedBox(height: 4),
                                     Text(
                                       "De R\$${oferta["oldPrice"].toStringAsFixed(2)}",
                                       style: const TextStyle(
                                         fontSize: 13,
                                         color: Colors.grey,
-                                        decoration:
-                                            TextDecoration.lineThrough,
+                                        decoration: TextDecoration.lineThrough,
                                       ),
                                     ),
                                     Text(
@@ -203,18 +201,17 @@ class HomePage extends StatelessWidget {
                               ),
                             ],
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    }).toList(),
                   ),
-
-                  const SizedBox(height: 40),
                 ],
               ),
             ),
           ),
         ),
       ),
+
     );
   }
 }
