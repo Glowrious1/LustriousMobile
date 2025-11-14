@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/', // Tela inicial = Login
+      initialRoute: '/', 
       routes: {
         '/': (context) => const Login(),
-        '/home': (context) => const HomePage(),
+        '/home': (context) => HomePage(),
         '/products': (context) => const ProductsPage(),
         '/cadastro': (context) => const Cadastro(),
       },
@@ -27,14 +27,15 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     final String userName =
         ModalRoute.of(context)!.settings.arguments as String? ?? 'Usuário';
 
-    // Lista de produtos em oferta
     final List<Map<String, dynamic>> ofertas = [
       {
         "name": "Hidratante Facial",
@@ -57,6 +58,59 @@ class HomePage extends StatelessWidget {
     ];
 
     return Scaffold(
+      key: _scaffoldKey,
+
+      // 🌟 DRAWER COMPLETO
+      drawer: Drawer(
+        backgroundColor: const Color.fromARGB(255, 255, 236, 200).withOpacity(0.95),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            UserAccountsDrawerHeader(
+              decoration: const BoxDecoration(
+                color:Color(0xFF5A4633),
+              ),
+              
+                
+              accountName: Text(
+                userName,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              accountEmail: Text("$userName@gmail.com"),
+             currentAccountPicture: null,
+             
+            ),
+
+            const Spacer(),
+
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const Login()),
+                  );
+                },
+                icon: const Icon(Icons.logout, color: Colors.white,),
+                label: const Text(
+      "Sair da conta",
+      style: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 190, 154, 55),
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      // 🌟 CORPO DA PÁGINA
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -76,7 +130,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Saudação
+                  // SAUDAÇÃO + ÍCONE DO PERFIL
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -104,13 +158,20 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      CircleAvatar(
-                        radius: 26,
-                        backgroundColor: Colors.white.withOpacity(0.8),
-                        child: const Icon(
-                          Icons.person,
-                          color: Color(0xFF5A4633),
-                          size: 28,
+
+                      // ⭐ ÍCONE QUE ABRE O DRAWER (AGORA FUNCIONANDO)
+                      GestureDetector(
+                        onTap: () {
+                          _scaffoldKey.currentState?.openDrawer();
+                        },
+                        child: CircleAvatar(
+                          radius: 26,
+                          backgroundColor: Colors.white.withOpacity(0.8),
+                          child: const Icon(
+                            Icons.person,
+                            color: Color(0xFF5A4633),
+                            size: 28,
+                          ),
                         ),
                       ),
                     ],
@@ -118,12 +179,10 @@ class HomePage extends StatelessWidget {
 
                   const SizedBox(height: 25),
 
-                  // Carrossel de Categorias
                   const CategoryCarrossel(),
 
                   const SizedBox(height: 30),
 
-                  // Row com 3 imagens responsivas
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: ofertas.map((oferta) {
@@ -200,7 +259,6 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-
     );
   }
 }

@@ -38,7 +38,6 @@ class _LoginState extends State<Login> {
       return;
     }
 
-    // 🔐 LOGIN FIXO AMANDA
     if (email == fixedEmail && senha == fixedSenha) {
       Navigator.pushReplacementNamed(
         context,
@@ -48,7 +47,6 @@ class _LoginState extends State<Login> {
       return;
     }
 
-    // 🔐 LOGIN DO CADASTRO NORMAL
     if (email == cadastroEmail && senha == cadastroSenha) {
       Navigator.pushReplacementNamed(
         context,
@@ -58,7 +56,6 @@ class _LoginState extends State<Login> {
       return;
     }
 
-    // ❌ ERRO
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text("Email ou senha incorretos!")),
     );
