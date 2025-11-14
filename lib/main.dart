@@ -87,8 +87,8 @@ class HomePage extends StatelessWidget {
                             Text(
                               "Olá, $userName ",
                               style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
+                                fontWeight: FontWeight.w100,
                                 color: Color(0xFF5A4633),
                               ),
                               overflow: TextOverflow.ellipsis,
@@ -122,17 +122,6 @@ class HomePage extends StatelessWidget {
                   const CategoryCarrossel(),
 
                   const SizedBox(height: 30),
-
-                  // Ofertas Especiais
-                  const Text(
-                    "Ofertas Especiais ",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF5A4633),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
 
                   // Row com 3 imagens responsivas
                   Row(

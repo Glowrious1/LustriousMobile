@@ -14,6 +14,12 @@ class _LoginState extends State<Login> {
   TextEditingController emailController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
 
+
+  final String fixedEmail = "amanda@gmail.com";
+  final String fixedSenha = "123";
+  final String fixedNome = "Amanda";
+
+
   String? cadastroEmail;
   String? cadastroSenha;
   String? cadastroNome;
@@ -23,7 +29,7 @@ class _LoginState extends State<Login> {
     String senha = senhaController.text;
     String nome = nomeController.text.isNotEmpty
         ? nomeController.text
-        : "Usuário"; // Caso não digite nome
+        : "Usuário";
 
     if (email.isEmpty || senha.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -32,19 +38,30 @@ class _LoginState extends State<Login> {
       return;
     }
 
-    // Login padrão ou login cadastrado
-    if ((email == "amanda@gmail.com" && senha == "123") ||
-        (email == cadastroEmail && senha == cadastroSenha)) {
+    // 🔐 LOGIN FIXO AMANDA
+    if (email == fixedEmail && senha == fixedSenha) {
       Navigator.pushReplacementNamed(
         context,
         '/home',
-        arguments: nome, // 👈 Passa o nome pra HomePage
+        arguments: fixedNome, 
       );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Email ou senha incorretos!")),
-      );
+      return;
     }
+
+    // 🔐 LOGIN DO CADASTRO NORMAL
+    if (email == cadastroEmail && senha == cadastroSenha) {
+      Navigator.pushReplacementNamed(
+        context,
+        '/home',
+        arguments: cadastroNome ?? nome,
+      );
+      return;
+    }
+
+    // ❌ ERRO
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Email ou senha incorretos!")),
+    );
   }
 
   @override
@@ -68,12 +85,7 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.all(20),
               margin: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color.fromARGB(
-                  255,
-                  228,
-                  214,
-                  170,
-                ).withOpacity(0.4),
+                color: const Color.fromARGB(255, 228, 214, 170).withOpacity(0.4),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -119,9 +131,8 @@ class _LoginState extends State<Login> {
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 255, 174, 81),
-                        ),
+                        borderSide:
+                            BorderSide(color: Color.fromARGB(255, 255, 174, 81)),
                       ),
                     ),
                   ),
@@ -139,9 +150,8 @@ class _LoginState extends State<Login> {
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 255, 174, 81),
-                        ),
+                        borderSide:
+                            BorderSide(color: Color.fromARGB(255, 255, 174, 81)),
                       ),
                     ),
                   ),
@@ -159,15 +169,12 @@ class _LoginState extends State<Login> {
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 255, 174, 81),
-                        ),
+                        borderSide:
+                            BorderSide(color: Color.fromARGB(255, 255, 174, 81)),
                       ),
                       suffixIcon: IconButton(
                         icon: Icon(
-                          _obscureText
-                              ? Icons.visibility
-                              : Icons.visibility_off,
+                          _obscureText ? Icons.visibility : Icons.visibility_off,
                           color: Colors.white70,
                         ),
                         onPressed: () {
@@ -217,6 +224,7 @@ class _LoginState extends State<Login> {
                           cadastroEmail = result['email'];
                           cadastroSenha = result['senha'];
                           cadastroNome = result['nome'];
+
                           emailController.text = cadastroEmail ?? '';
                           senhaController.text = cadastroSenha ?? '';
                           nomeController.text = cadastroNome ?? '';
