@@ -6,94 +6,139 @@ class ProductsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Recebe a categoria enviada pelo carrossel
     final String? category =
         ModalRoute.of(context)!.settings.arguments as String?;
 
-    // Filtra os produtos da categoria
+    // Banners por categoria
+    final Map<String, String> categoryBanners = {
+      "Pele": "assets/imagens_baner_2.png",
+      "Rosto": "assets/imagens_baner_1.png",
+      "Cabelo": "assets/imagens_baner_12.png",
+      "Corpo": "assets/imagens_baner_3.png",
+    };
+
+    final bannerImage = categoryBanners[category] ?? "";
+
     final filteredProducts = sampleProducts
         .where((product) => product.category == category)
         .toList();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(category ?? "Produtos"),
-      ),
-      body: filteredProducts.isEmpty
-          ? const Center(child: Text("Nenhum produto encontrado"))
-          : GridView.builder(
-              padding: const EdgeInsets.all(16),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 0.7,
-              ),
-              itemCount: filteredProducts.length,
-              itemBuilder: (context, index) {
-                final product = filteredProducts[index];
-
-                return Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  elevation: 4,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(12),
-                          ),
-
-                          // ======= CORREÇÃO DA IMAGEM =======
-                          child: product.image.startsWith("http")
-                              ? Image.network(
-                                  product.image,
-                                  fit: BoxFit.cover,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Center(
-                                      child: Icon(Icons.broken_image, size: 32),
-                                    );
-                                  },
-                                )
-                              : Image.asset(
-                                  product.image,
-                                  fit: BoxFit.cover,
-                                ),
-                        ),
-                      ),
-
-                      // ======= INFORMAÇÕES DO PRODUTO =======
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              product.name,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              "R\$ ${product.price.toStringAsFixed(2)}",
-                              style: const TextStyle(
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          category ?? "Produtos",
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w300, // fonte fina e delicada
+            color: const Color.fromARGB(255, 165, 142, 66), // dourado claro
             ),
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Banner da categoria
+            if (bannerImage.isNotEmpty)
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(50), // curva elegante
+                ),
+                child: Image.asset(
+                  bannerImage,
+                  width: double.infinity,
+                  height: 220,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            const SizedBox(height: 16),
+
+            // Grid de produtos
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: filteredProducts.isEmpty
+                  ? const Center(child: Text("Nenhum produto encontrado"))
+                  : GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(), // Desativa rolagem interna
+                      shrinkWrap: true, // Faz o Grid ocupar apenas o espaço necessário
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 16,
+                        crossAxisSpacing: 16,
+                        childAspectRatio: 0.7,
+                      ),
+                      itemCount: filteredProducts.length,
+                      itemBuilder: (context, index) {
+                        final product = filteredProducts[index];
+                        return Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          elevation: 4,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Expanded(
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.vertical(
+                                    top: Radius.circular(12),
+                                  ),
+                                  child: product.image.startsWith("http")
+                                      ? Image.network(
+                                          product.image,
+                                          fit: BoxFit.cover,
+                                          errorBuilder:
+                                              (context, error, stackTrace) {
+                                            return const Center(
+                                                child: Icon(Icons.broken_image,
+                                                    size: 32));
+                                          },
+                                        )
+                                      : Image.asset(
+                                          product.image,
+                                          fit: BoxFit.cover,
+                                        ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      product.name,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      "R\$ ${product.price.toStringAsFixed(2)}",
+                                      style: const TextStyle(
+                                          color: Colors.black54),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
