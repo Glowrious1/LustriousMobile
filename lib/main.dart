@@ -253,6 +253,15 @@ class HomePage extends StatelessWidget {
                       );
                     }).toList(),
                   ),
+
+                  Padding(
+  padding: EdgeInsets.zero,
+  child: Image.asset(
+    "assets/imagem_produtos.png",
+    width: double.infinity,      // ocupa toda a largura
+    fit: BoxFit.contain,         // mantém proporção
+  ),
+),
                 ],
               ),
             ),

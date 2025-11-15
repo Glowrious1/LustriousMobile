@@ -81,7 +81,7 @@ class CategoryCarrossel extends StatelessWidget {
             }).toList(),
           ),
 
-          const SizedBox(height: 65),
+         
         ],
       ),
     );
