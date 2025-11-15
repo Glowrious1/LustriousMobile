@@ -6,16 +6,19 @@ class ProductsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Recebe a categoria do carrossel
-    final category = ModalRoute.of(context)!.settings.arguments as String?;
+    // Recebe a categoria enviada pelo carrossel
+    final String? category =
+        ModalRoute.of(context)!.settings.arguments as String?;
 
-    // Filtra os produtos por categoria
+    // Filtra os produtos da categoria
     final filteredProducts = sampleProducts
         .where((product) => product.category == category)
         .toList();
 
     return Scaffold(
-      appBar: AppBar(title: Text(category ?? "Produtos")),
+      appBar: AppBar(
+        title: Text(category ?? "Produtos"),
+      ),
       body: filteredProducts.isEmpty
           ? const Center(child: Text("Nenhum produto encontrado"))
           : GridView.builder(
@@ -29,6 +32,7 @@ class ProductsPage extends StatelessWidget {
               itemCount: filteredProducts.length,
               itemBuilder: (context, index) {
                 final product = filteredProducts[index];
+
                 return Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -42,12 +46,26 @@ class ProductsPage extends StatelessWidget {
                           borderRadius: const BorderRadius.vertical(
                             top: Radius.circular(12),
                           ),
-                          child: Image.network(
-                            product.image,
-                            fit: BoxFit.cover,
-                          ),
+
+                          // ======= CORREÇÃO DA IMAGEM =======
+                          child: product.image.startsWith("http")
+                              ? Image.network(
+                                  product.image,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return const Center(
+                                      child: Icon(Icons.broken_image, size: 32),
+                                    );
+                                  },
+                                )
+                              : Image.asset(
+                                  product.image,
+                                  fit: BoxFit.cover,
+                                ),
                         ),
                       ),
+
+                      // ======= INFORMAÇÕES DO PRODUTO =======
                       Padding(
                         padding: const EdgeInsets.all(8),
                         child: Column(
@@ -58,9 +76,16 @@ class ProductsPage extends StatelessWidget {
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                             const SizedBox(height: 4),
-                            Text("\$${product.price.toStringAsFixed(2)}"),
+                            Text(
+                              "R\$ ${product.price.toStringAsFixed(2)}",
+                              style: const TextStyle(
+                                color: Colors.black54,
+                              ),
+                            ),
                           ],
                         ),
                       ),

@@ -13,7 +13,7 @@ final List<Product> sampleProducts = [
   // ================== PELE ==================
   Product(
     name: "Creme Hidratante Facial",
-    image: "https://via.placeholder.com/150",
+    image: "assets/imagem_gloss_1.png",
     price: 59.9,
     category: "Pele",
   ),
