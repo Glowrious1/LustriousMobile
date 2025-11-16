@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
 
-      // 🌟 DRAWER COMPLETO
+      // DRAWER
       drawer: Drawer(
         backgroundColor: const Color.fromARGB(255, 255, 236, 200).withOpacity(0.95),
         child: Column(
@@ -68,21 +68,16 @@ class HomePage extends StatelessWidget {
           children: [
             UserAccountsDrawerHeader(
               decoration: const BoxDecoration(
-                color:Color(0xFF5A4633),
+                color: Color(0xFF5A4633),
               ),
-              
-                
               accountName: Text(
                 userName,
                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               accountEmail: Text("$userName@gmail.com"),
-             currentAccountPicture: null,
-             
+              currentAccountPicture: null,
             ),
-
             const Spacer(),
-
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton.icon(
@@ -94,12 +89,12 @@ class HomePage extends StatelessWidget {
                 },
                 icon: const Icon(Icons.logout, color: Colors.white,),
                 label: const Text(
-      "Sair da conta",
-      style: TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
+                  "Sair da conta",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 190, 154, 55),
                   minimumSize: const Size(double.infinity, 50),
@@ -110,7 +105,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
 
-      // 🌟 CORPO DA PÁGINA
+      // CORPO DA PÁGINA
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -124,13 +119,12 @@ class HomePage extends StatelessWidget {
         ),
         child: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.only(bottom: 220),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // SAUDAÇÃO + ÍCONE DO PERFIL
+                  // Saudação + ícone do perfil
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -158,8 +152,6 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                       ),
-
-                      // ⭐ ÍCONE QUE ABRE O DRAWER (AGORA FUNCIONANDO)
                       GestureDetector(
                         onTap: () {
                           _scaffoldKey.currentState?.openDrawer();
@@ -254,14 +246,13 @@ class HomePage extends StatelessWidget {
                     }).toList(),
                   ),
 
-                  Padding(
-  padding: EdgeInsets.zero,
-  child: Image.asset(
-    "assets/imagem_produtos.png",
-    width: double.infinity,      // ocupa toda a largura
-    fit: BoxFit.contain,         // mantém proporção
-  ),
-),
+                  // 🔹 IMAGEM NO RODAPÉ
+                  const SizedBox(height: 20), // espaçamento antes do rodapé
+                  Image.asset(
+                    "assets/imagem_produtos.png",
+                    width: double.infinity,
+                    fit: BoxFit.fitWidth,
+                  ),
                 ],
               ),
             ),
