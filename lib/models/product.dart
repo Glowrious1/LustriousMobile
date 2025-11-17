@@ -196,31 +196,31 @@ final List<Product> sampleProducts = [
   // ================== CABELO ==================
   Product(
     name: "Shampoo Hidratante",
-    image: "https://via.placeholder.com/150",
+    image: "assets/imagem_cabelo_shampoo.png",
     price: 35.0,
     category: "Cabelo",
   ),
   Product(
     name: "Condicionador Nutritivo",
-    image: "https://via.placeholder.com/150",
+    image: "assets/imagem_cabelo_condicionador_1.png",
     price: 40.0,
     category: "Cabelo",
   ),
   Product(
     name: "Máscara Capilar Reconstrução",
-    image: "https://via.placeholder.com/150",
+    image: "assets/imagem_cabelo_hidratante_1.png",
     price: 79.9,
     category: "Cabelo",
   ),
   Product(
     name: "Óleo Capilar Argan",
-    image: "https://via.placeholder.com/150",
+    image: "assets/imagem_cabelo_oleo_1.png",
     price: 59.9,
     category: "Cabelo",
   ),
   Product(
-    name: "Leave-in Defrizante",
-    image: "https://via.placeholder.com/150",
+    name: "Protetor Térmico ",
+    image: "assets/imagem_cabelo_protetor_1.png",
     price: 49.9,
     category: "Cabelo",
   ),
