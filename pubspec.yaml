@@ -26,34 +26,8 @@ flutter:
     - assets/imagem_fundo_login4.jpg
     - assets/icon2.png
     - assets/imagem_corpo_1.jpg
-    - assets/imagem_cabelo_1.jpg
-    - assets/imagem_pele_1.jpg
-    - assets/imagem_produto_1.png
-    - assets/imagem_cabelo_2.jpg
     - assets/imagem_rosto.jpg
     - assets/imagem_produtos.png
-    - assets/imagem_base_1.png
-    - assets/imagem_blush_bastão.png
-    - assets/imagem_blush_pó_1.png
-    - assets/imagem_blush_pó_2.png
-    - assets/imagem_gloss_1.png
-    - assets/imagem_gloss_2.png
-    - assets/imagem_gloss_3.png 
-    - assets/imagem_gloss_4.png 
-    - assets/imagem_gloss_5.png 
-    - assets/imagem_gloss_6.png
-    - assets/imagem_produto_1.png
-    - assets/imagem_rimel_1.png 
-    - assets/imagem_sombra_1.png 
-    - assets/imagem_sombra_2.png
-    - assets/imagem_serum_1.png 
-    - assets/imagem_serum_2.png
-    - assets/imagem_protetor_1.png
-    - assets/imagem_hidratante_1.png
-    - assets/imagem_creme_1.png 
-    - assets/imagem_esfoliante_1.png
-    - assets/imagem_esfoliante_2.png
-    - assets/imagem_agua_1.png
     - assets/imagens_baner_1.png 
     - assets/imagens_baner_2.png 
     - assets/imagens_baner_3.png 
@@ -66,21 +40,48 @@ flutter:
     - assets/imagens_baner_10.png 
     - assets/imagens_baner_11.png 
     - assets/imagens_baner_12.png
-    - assets/imagem_base_liquida_2.png 
-    - assets/imagem_base_liquida.png 
-    - assets/imagem_batao_1.png 
-    - assets/imagem_batao_2.png 
-    - assets/imagem_batao_3.png
-    - assets/imagem_bruma_1.png 
-    - assets/imagem_bruma_2.png
-    - assets/imagem_corretivo_1.png
-    - assets/imagem_deliniador_1.png
-    - assets/imagem_iluminador_2.png 
-    - assets/imagem_iluminador_3.png
-    - assets/imagem_po_compacto_1.png 
-    - assets/imagem_po_solto_1.png
+    - assets/imagem_pele_1.jpg
+    - assets/imagem_pele_agua_1.png 
+    - assets/imagem_pele_creme_1.png 
+    - assets/imagem_pele_esfoliante_1.png 
+    - assets/imagem_pele_esfoliante_2.png 
+    - assets/imagem_pele_hidratante_1.png 
+    - assets/imagem_pele_produto_1.png 
+    - assets/imagem_pele_protetor_1.png 
+    - assets/imagem_pele_serum_1.png 
+    - assets/imagem_pele_serum_2.png
+    - assets/imagem_rosto.jpg
+    - assets/imagem_rosto_base_1.png 
+    - assets/imagem_rosto_base_liquida_2.png 
+    - assets/imagem_rosto_base_liquida.png 
+    - assets/imagem_rosto_batao_1.png 
+    - assets/imagem_rosto_batao_2.png 
+    - assets/imagem_rosto_batao_3.png 
+    - assets/imagem_rosto_blush_bastão.png 
+    - assets/imagem_rosto_blush_pó_1.png 
+    - assets/imagem_rosto_blush_pó_2.png 
+    - assets/imagem_rosto_bruma_1.png 
+    - assets/imagem_rosto_bruma_2.png 
+    - assets/imagem_rosto_corretivo_1.png 
+    - assets/imagem_rosto_deliniador_1.png 
+    - assets/imagem_rosto_gloss_1.png 
+    - assets/imagem_rosto_gloss_2.png 
+    - assets/imagem_rosto_gloss_3.png 
+    - assets/imagem_rosto_gloss_4.png 
+    - assets/imagem_rosto_gloss_5.png 
+    - assets/imagem_rosto_gloss_6.png 
+    - assets/imagem_rosto_iluminador_2.png 
+    - assets/imagem_rosto_iluminador_3.png 
+    - assets/imagem_rosto_po_compacto_1.png 
+    - assets/imagem_rosto_po_solto_1.png 
+    - assets/imagem_rosto_rimel_1.png 
+    - assets/imagem_rosto_sombra_1.png 
+    - assets/imagem_rosto_sombra_2.png
+    - assets/imagem_cabelo_1.jpg
+    - assets/imagem_cabelo_2.jpg
     - assets/imagem_cabelo_condicionador_1.png 
     - assets/imagem_cabelo_hidratante_1.png 
     - assets/imagem_cabelo_oleo_1.png 
     - assets/imagem_cabelo_protetor_1.png 
     - assets/imagem_cabelo_shampoo.png
+    - assets/imagem_corpo_1.jpg
