@@ -39,19 +39,19 @@ class HomePage extends StatelessWidget {
     final List<Map<String, dynamic>> ofertas = [
       {
         "name": "Hidratante Facial",
-        "image": "assets/imagem_produto_1.png",
+        "image": "assets/imagem_pele_creme_1.png",
         "oldPrice": 59.90,
         "newPrice": 39.90,
       },
       {
         "name": "Gloss - Rosé Glow",
-        "image": "assets/imagem_gloss_1.png",
+        "image": "assets/imagem_rosto_gloss_1.png",
         "oldPrice": 79.90,
         "newPrice": 49.90,
       },
       {
         "name": "Blush em Pó",
-        "image": "assets/imagem_blush_pó_1.png",
+        "image": "assets/imagem_rosto_blush_pó_1.png",
         "oldPrice": 89.90,
         "newPrice": 59.90,
       },
