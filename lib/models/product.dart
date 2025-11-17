@@ -37,7 +37,7 @@ final List<Product> sampleProducts = [
   ),
   Product(
     name: "Tônico Adstringente",
-    image: "assets/imagem_serum_2.png",
+    image: "assets/imagem_pele_serum_2.png",
     price: 49.9,
     category: "Pele",
   ),
@@ -134,13 +134,13 @@ final List<Product> sampleProducts = [
   ),
   Product(
     name: "Batom Vermelho Luxo",
-    image: "",
+    image: "assets/imagem_rosto_batao_1.png",
     price: 49.9,
     category: "Rosto",
   ),
   Product(
     name: "Gloss Labial Vermelho",
-    image: "assets/imagem_rosto_batao_1.png",
+    image: "assets/imagem_rosto_gloss_1.png",
     price: 29.9,
     category: "Rosto",
   ),
