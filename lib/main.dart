@@ -1,8 +1,9 @@
-import 'package:app_lustrious/pages/pagina_cadastro.dart';
 import 'package:flutter/material.dart';
-import 'package:app_lustrious/pages/product_list_page.dart';
-import 'package:app_lustrious/widgets/category_carrossel.dart';
 import 'package:app_lustrious/pages/login_page.dart';
+import 'package:app_lustrious/pages/pagina_cadastro.dart';
+import 'package:app_lustrious/pages/product_list_page.dart';
+import 'package:app_lustrious/pages/product_details_page.dart';
+import 'package:app_lustrious/widgets/category_carrossel.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,12 +16,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/', 
+      initialRoute: '/',
       routes: {
         '/': (context) => const Login(),
         '/home': (context) => HomePage(),
         '/products': (context) => const ProductsPage(),
         '/cadastro': (context) => const Cadastro(),
+
+        // 👉 Rota da página de detalhes
+        '/product-details': (context) => const ProductDetailPage(),
       },
     );
   }
@@ -60,7 +64,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
 
-      // DRAWER
+      // MENU LATERAL (DRAWER)
       drawer: Drawer(
         backgroundColor: const Color.fromARGB(255, 255, 236, 200).withOpacity(0.95),
         child: Column(
@@ -87,7 +91,7 @@ class HomePage extends StatelessWidget {
                     MaterialPageRoute(builder: (_) => const Login()),
                   );
                 },
-                icon: const Icon(Icons.logout, color: Colors.white,),
+                icon: const Icon(Icons.logout, color: Colors.white),
                 label: const Text(
                   "Sair da conta",
                   style: TextStyle(
@@ -124,7 +128,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Saudação + ícone do perfil
+                  // TÍTULO + PERFIL
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -171,10 +175,12 @@ class HomePage extends StatelessWidget {
 
                   const SizedBox(height: 25),
 
+                  // CARROSSEL DE CATEGORIAS
                   const CategoryCarrossel(),
 
                   const SizedBox(height: 30),
 
+                  // OFERTAS
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: ofertas.map((oferta) {
@@ -246,8 +252,9 @@ class HomePage extends StatelessWidget {
                     }).toList(),
                   ),
 
-                  // 🔹 IMAGEM NO RODAPÉ
-                  const SizedBox(height: 20), // espaçamento antes do rodapé
+                  const SizedBox(height: 20),
+
+                  // IMAGEM DO RODAPÉ
                   Image.asset(
                     "assets/imagem_produtos.png",
                     width: double.infinity,

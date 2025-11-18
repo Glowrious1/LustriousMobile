@@ -17,15 +17,49 @@ class ProductCard extends StatelessWidget {
         );
       },
       child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        elevation: 4,
         child: Column(
           children: [
-            Expanded(child: Image.network(product.image, fit: BoxFit.cover)),
+            Expanded(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(14)),
+                child: product.image.startsWith('http')
+                    ? Image.network(
+                        product.image,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      )
+                    : Image.asset(
+                        product.image,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+              ),
+            ),
+
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(product.name,
-                  maxLines: 1, overflow: TextOverflow.ellipsis),
+              child: Text(
+                product.name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF5A4633),
+                ),
+              ),
             ),
-            Text("R\$ ${product.price.toStringAsFixed(2)}"),
+
+            Text(
+              "R\$ ${product.price.toStringAsFixed(2)}",
+              style: const TextStyle(
+                color: Colors.pink,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 8),
           ],
         ),
       ),

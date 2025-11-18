@@ -33,11 +33,11 @@ class ProductsPage extends StatelessWidget {
         ),
         title: Text(
           category ?? "Produtos",
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 26,
-            fontWeight: FontWeight.w300, // fonte fina e delicada
-            color: const Color.fromARGB(255, 165, 142, 66), // dourado claro
-            ),
+            fontWeight: FontWeight.w300,
+            color: Color.fromARGB(255, 165, 142, 66),
+          ),
         ),
         centerTitle: true,
       ),
@@ -48,7 +48,7 @@ class ProductsPage extends StatelessWidget {
             if (bannerImage.isNotEmpty)
               ClipRRect(
                 borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(50), // curva elegante
+                  bottom: Radius.circular(50),
                 ),
                 child: Image.asset(
                   bannerImage,
@@ -65,8 +65,8 @@ class ProductsPage extends StatelessWidget {
               child: filteredProducts.isEmpty
                   ? const Center(child: Text("Nenhum produto encontrado"))
                   : GridView.builder(
-                      physics: const NeverScrollableScrollPhysics(), // Desativa rolagem interna
-                      shrinkWrap: true, // Faz o Grid ocupar apenas o espaço necessário
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
@@ -77,60 +77,71 @@ class ProductsPage extends StatelessWidget {
                       itemCount: filteredProducts.length,
                       itemBuilder: (context, index) {
                         final product = filteredProducts[index];
-                        return Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          elevation: 4,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Expanded(
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(
-                                    top: Radius.circular(12),
+
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/product-details',
+                              arguments: product, // AGORA MANDA O PRODUTO
+                            );
+                          },
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            elevation: 4,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Expanded(
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(12),
+                                    ),
+                                    child: product.image.startsWith("http")
+                                        ? Image.network(
+                                            product.image,
+                                            fit: BoxFit.cover,
+                                            errorBuilder: (context, error,
+                                                stackTrace) {
+                                              return const Center(
+                                                  child: Icon(Icons.broken_image,
+                                                      size: 32));
+                                            },
+                                          )
+                                        : Image.asset(
+                                            product.image,
+                                            fit: BoxFit.cover,
+                                          ),
                                   ),
-                                  child: product.image.startsWith("http")
-                                      ? Image.network(
-                                          product.image,
-                                          fit: BoxFit.cover,
-                                          errorBuilder:
-                                              (context, error, stackTrace) {
-                                            return const Center(
-                                                child: Icon(Icons.broken_image,
-                                                    size: 32));
-                                          },
-                                        )
-                                      : Image.asset(
-                                          product.image,
-                                          fit: BoxFit.cover,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        product.name,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
                                         ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      product.name,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      "R\$ ${product.price.toStringAsFixed(2)}",
-                                      style: const TextStyle(
-                                          color: Colors.black54),
-                                    ),
-                                  ],
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        "R\$ ${product.price.toStringAsFixed(2)}",
+                                        style: const TextStyle(
+                                            color: Colors.black54),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         );
                       },

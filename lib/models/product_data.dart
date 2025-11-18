@@ -1,68 +1,61 @@
 import 'product.dart';
 
-// Lista geral de produtos
+// LISTA PRINCIPAL DE PRODUTOS
 final List<Product> sampleProducts = [
-  // 🟢 Categoria: Pele
+
+  // CATEGORIA: PELE
   Product(
-    name: "Protetor Solar FPS 50",
-    image: "https://via.placeholder.com/150",
-    price: 59.9,
+    name: "Creme Hidratante Corporal",
+    image: "https://i.imgur.com/Z7a8E3L.jpeg",
+    price: 29.90,
     category: "Pele",
   ),
   Product(
-    name: "Hidratante Facial",
-    image: "https://via.placeholder.com/150",
-    price: 45.0,
+    name: "Sérum Facial Glow",
+    image: "https://i.imgur.com/8ZQZy2L.jpeg",
+    price: 49.90,
+    category: "Pele",
+  ),
+  Product(
+    name: "Esfoliante Corporal de Açúcar",
+    image: "https://i.imgur.com/DO3H1v5.jpeg",
+    price: 34.90,
     category: "Pele",
   ),
 
-  // 🟢 Categoria: Rosto
+  // CATEGORIA: CABELO
   Product(
-    name: "Máscara Facial",
-    image: "https://via.placeholder.com/150",
-    price: 29.9,
-    category: "Rosto",
-  ),
-  Product(
-    name: "Esfoliante Facial",
-    image: "https://via.placeholder.com/150",
-    price: 34.9,
-    category: "Rosto",
-  ),
-
-  // 🟢 Categoria: Cabelo
-  Product(
-    name: "Shampoo Revitalizante",
-    image: "https://via.placeholder.com/150",
-    price: 39.9,
+    name: "Shampoo Nutritivo",
+    image: "https://i.imgur.com/vqqs8BC.jpeg",
+    price: 22.50,
     category: "Cabelo",
   ),
   Product(
-    name: "Condicionador Nutritivo",
-    image: "https://via.placeholder.com/150",
-    price: 42.9,
+    name: "Máscara Capilar Hidratante",
+    image: "https://i.imgur.com/Ybb3Tzm.jpeg",
+    price: 35.00,
     category: "Cabelo",
   ),
 
-  // 🟢 Categoria: Corpo
+  // CATEGORIA: CORPO
   Product(
-    name: "Hidratante Corporal",
-    image: "https://via.placeholder.com/150",
-    price: 49.9,
+    name: "Bruma Corporal Perfumada",
+    image: "https://i.imgur.com/yXH6gCJ.jpeg",
+    price: 39.90,
     category: "Corpo",
   ),
   Product(
-    name: "Óleo Corporal",
-    image: "https://via.placeholder.com/150",
-    price: 55.0,
+    name: "Óleo Corporal Iluminador",
+    image: "https://i.imgur.com/0mrXw0A.jpeg",
+    price: 44.90,
     category: "Corpo",
   ),
 ];
 
-// Lista de produtos mais vendidos (para a HomePage)
+// LISTA DE MAIS VENDIDOS
 final List<Product> bestSellers = [
   sampleProducts[0],
-  sampleProducts[2],
-  sampleProducts[4],
+  sampleProducts[1],
+  sampleProducts[5],
   sampleProducts[6],
 ];
