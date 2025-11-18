@@ -4,6 +4,7 @@ import 'package:app_lustrious/pages/pagina_cadastro.dart';
 import 'package:app_lustrious/pages/product_list_page.dart';
 import 'package:app_lustrious/pages/product_details_page.dart';
 import 'package:app_lustrious/widgets/category_carrossel.dart';
+import 'package:app_lustrious/models/product.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         '/products': (context) => const ProductsPage(),
         '/cadastro': (context) => const Cadastro(),
 
-        // 👉 Rota da página de detalhes
+        // 👉 Tela de Detalhes
         '/product-details': (context) => const ProductDetailPage(),
       },
     );
@@ -40,31 +41,31 @@ class HomePage extends StatelessWidget {
     final String userName =
         ModalRoute.of(context)!.settings.arguments as String? ?? 'Usuário';
 
-    final List<Map<String, dynamic>> ofertas = [
-      {
-        "name": "Hidratante Facial",
-        "image": "assets/imagem_pele_creme_1.png",
-        "oldPrice": 59.90,
-        "newPrice": 39.90,
-      },
-      {
-        "name": "Gloss - Rosé Glow",
-        "image": "assets/imagem_rosto_gloss_1.png",
-        "oldPrice": 79.90,
-        "newPrice": 49.90,
-      },
-      {
-        "name": "Blush em Pó",
-        "image": "assets/imagem_rosto_blush_pó_1.png",
-        "oldPrice": 89.90,
-        "newPrice": 59.90,
-      },
+    // LISTA DE OFERTAS COMO PRODUTOS
+    final List<Product> ofertas = [
+      Product(
+        name: "Hidratante Facial",
+        image: "assets/imagem_pele_creme_1.png",
+        price: 39.90,
+        category: "Pele",
+      ),
+      Product(
+        name: "Gloss - Rosé Glow",
+        image: "assets/imagem_rosto_gloss_1.png",
+        price: 49.90,
+        category: "Rosto",
+      ),
+      Product(
+        name: "Blush em Pó",
+        image: "assets/imagem_rosto_blush_pó_1.png",
+        price: 59.90,
+        category: "Rosto",
+      ),
     ];
 
     return Scaffold(
       key: _scaffoldKey,
 
-      // MENU LATERAL (DRAWER)
       drawer: Drawer(
         backgroundColor: const Color.fromARGB(255, 255, 236, 200).withOpacity(0.95),
         child: Column(
@@ -79,7 +80,6 @@ class HomePage extends StatelessWidget {
                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               accountEmail: Text("$userName@gmail.com"),
-              currentAccountPicture: null,
             ),
             const Spacer(),
             Padding(
@@ -109,7 +109,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
 
-      // CORPO DA PÁGINA
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -128,7 +127,8 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // TÍTULO + PERFIL
+                  
+                  // TÍTULO
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -175,77 +175,86 @@ class HomePage extends StatelessWidget {
 
                   const SizedBox(height: 25),
 
-                  // CARROSSEL DE CATEGORIAS
+                  // CATEGORIAS
                   const CategoryCarrossel(),
 
                   const SizedBox(height: 30),
 
-                  // OFERTAS
+                  // OFERTAS (FUNCIONANDO!)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: ofertas.map((oferta) {
+                    children: ofertas.map((product) {
                       return Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 4),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.9),
-                            borderRadius: BorderRadius.circular(16),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.08),
-                                blurRadius: 6,
-                                offset: const Offset(2, 4),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: [
-                              AspectRatio(
-                                aspectRatio: 1,
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(16)),
-                                  child: Image.asset(
-                                    oferta["image"],
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/product-details',
+                              arguments: product,
+                            );
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.08),
+                                  blurRadius: 6,
+                                  offset: const Offset(2, 4),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                AspectRatio(
+                                  aspectRatio: 1,
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.vertical(
+                                        top: Radius.circular(16)),
+                                    child: Image.asset(
+                                      product.image,
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      oferta["name"],
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Color(0xFF5A4633),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        product.name,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Color(0xFF5A4633),
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      "De R\$${oferta["oldPrice"].toStringAsFixed(2)}",
-                                      style: const TextStyle(
-                                        fontSize: 13,
-                                        color: Colors.grey,
-                                        decoration: TextDecoration.lineThrough,
+                                      const SizedBox(height: 4),
+                                      const Text(
+                                        "Promoção",
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.grey,
+                                          decoration: TextDecoration.lineThrough,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      "Por R\$${oferta["newPrice"].toStringAsFixed(2)}",
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.pink,
-                                        fontWeight: FontWeight.bold,
+                                      Text(
+                                        "Por R\$${product.price.toStringAsFixed(2)}",
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.pink,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -254,7 +263,7 @@ class HomePage extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  // IMAGEM DO RODAPÉ
+                  // IMAGEM DO FINAL
                   Image.asset(
                     "assets/imagem_produtos.png",
                     width: double.infinity,
