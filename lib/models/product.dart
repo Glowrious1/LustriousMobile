@@ -164,7 +164,7 @@ final List<Product> sampleProducts = [
   ),
   Product(
     name: "Paleta de Sombras Neutras Com Glitter",
-    image: "assets/imagem_rosto_sombra_1.png",
+    image: "assets/imagem_rosto_sombra_2.png",
     price: 99.9,
     category: "Rosto",
   ),
