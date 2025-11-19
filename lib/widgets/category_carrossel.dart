@@ -22,8 +22,8 @@ class CategoryCarrossel extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  '/products',               // ROTA QUE DEVE EXISTIR NO MAIN
-                  arguments: category["name"], // MANDA A CATEGORIA CERTA
+                  '/products',             
+                  arguments: category["name"], 
                 );
               },
               child: Container(

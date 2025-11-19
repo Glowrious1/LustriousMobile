@@ -263,7 +263,6 @@ class HomePage extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  // IMAGEM DO FINAL
                   Image.asset(
                     "assets/imagem_produtos.png",
                     width: double.infinity,

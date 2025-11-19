@@ -1,58 +1,71 @@
 import 'product.dart';
 
-// LISTA PRINCIPAL DE PRODUTOS
+// Lista principal de produtos
 final List<Product> sampleProducts = [
+  // PELE
+  Product(
+    name: "Creme Hidratante Facial",
+    image: "assets/imagem_pele_creme_1.png",
+    price: 59.90,
+    category: "Pele",
+  ),
+  Product(
+    name: "Sérum Anti-Idade",
+    image: "assets/imagem_pele_serum_1.png",
+    price: 129.90,
+    category: "Pele",
+  ),
+  Product(
+    name: "Protetor Solar FPS 70",
+    image: "assets/imagem_pele_protetor_1.png",
+    price: 89.90,
+    category: "Pele",
+  ),
 
-  // CATEGORIA: PELE
+  // ROSTO
   Product(
-    name: "Creme Hidratante Corporal",
-    image: "https://i.imgur.com/Z7a8E3L.jpeg",
-    price: 29.90,
-    category: "Pele",
+    name: "Base Líquida Matte",
+    image: "assets/imagem_rosto_base_1.png",
+    price: 89.90,
+    category: "Rosto",
   ),
   Product(
-    name: "Sérum Facial Glow",
-    image: "https://i.imgur.com/8ZQZy2L.jpeg",
-    price: 49.90,
-    category: "Pele",
-  ),
-  Product(
-    name: "Esfoliante Corporal de Açúcar",
-    image: "https://i.imgur.com/DO3H1v5.jpeg",
-    price: 34.90,
-    category: "Pele",
+    name: "Corretivo Alta Cobertura",
+    image: "assets/imagem_rosto_corretivo_1.png",
+    price: 59.90,
+    category: "Rosto",
   ),
 
-  // CATEGORIA: CABELO
+  // CABELO
   Product(
-    name: "Shampoo Nutritivo",
-    image: "https://i.imgur.com/vqqs8BC.jpeg",
-    price: 22.50,
+    name: "Shampoo Hidratante",
+    image: "assets/imagem_cabelo_shampoo.png",
+    price: 35.0,
     category: "Cabelo",
   ),
   Product(
-    name: "Máscara Capilar Hidratante",
-    image: "https://i.imgur.com/Ybb3Tzm.jpeg",
-    price: 35.00,
+    name: "Condicionador Nutritivo",
+    image: "assets/imagem_cabelo_condicionador_1.png",
+    price: 40.0,
     category: "Cabelo",
   ),
 
-  // CATEGORIA: CORPO
+  // CORPO
   Product(
-    name: "Bruma Corporal Perfumada",
-    image: "https://i.imgur.com/yXH6gCJ.jpeg",
-    price: 39.90,
+    name: "Hidratante Corporal",
+    image: "assets/imagem_corpo_hidratante_2.png",
+    price: 59.90,
     category: "Corpo",
   ),
   Product(
-    name: "Óleo Corporal Iluminador",
-    image: "https://i.imgur.com/0mrXw0A.jpeg",
-    price: 44.90,
+    name: "Bronzeador Corporal",
+    image: "assets/imagem_corpo_bronzeador_1.png",
+    price: 59.90,
     category: "Corpo",
   ),
 ];
 
-// LISTA DE MAIS VENDIDOS
+// Lista de mais vendidos (opcional)
 final List<Product> bestSellers = [
   sampleProducts[0],
   sampleProducts[1],

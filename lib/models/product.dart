@@ -4,10 +4,12 @@ class Product {
   final double price;
   final String category;
 
-  Product({required this.name, 
-  required this.image, 
-  required this.price, 
-  required this.category});
+  Product({
+    required this.name,
+    required this.image,
+    required this.price,
+    required this.category,
+  });
 }
 final List<Product> sampleProducts = [
   // ================== PELE ==================
