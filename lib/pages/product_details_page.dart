@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart'; // importa a lista sampleProducts
+import '../models/product.dart'; 
 import '../widgets/product_card.dart';
 import 'dart:math';
 
@@ -11,7 +11,7 @@ class ProductDetailPage extends StatelessWidget {
     final Product product =
         ModalRoute.of(context)!.settings.arguments as Product;
 
-     List<Product> relatedProducts = sampleProducts
+    List<Product> relatedProducts = sampleProducts
         .where((p) => p.name != product.name)
         .toList();
 
@@ -21,46 +21,87 @@ class ProductDetailPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(product.name),
-        backgroundColor: const Color.fromARGB(255, 197, 145, 95),
+        title: Text(
+          product.name,
+          style: const TextStyle(
+            color:  Color.fromARGB(255, 165, 142, 66),
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 245, 227, 194),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // IMAGEM PRINCIPAL
-              product.image.startsWith('http')
-                  ? Image.network(
-                      product.image,
-                      height: 260,
-                      fit: BoxFit.contain,
-                    )
-                  : Image.asset(
-                      product.image,
-                      height: 260,
-                      fit: BoxFit.contain,
-                    ),
+child: Padding(
+  padding: const EdgeInsets.all(16),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      // IMAGEM PRINCIPAL COM BORDAS ARREDONDADAS
+      Container(
+        height: 260,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16), // borda arredondada
+          color: Colors.grey[200], // cor de fundo caso a imagem não preencha
+        ),
+        clipBehavior: Clip.antiAlias, // garante que a imagem siga a borda arredondada
+        child: product.image.startsWith('http')
+            ? Image.network(
+                product.image,
+                fit: BoxFit.contain,
+              )
+            : Image.asset(
+                product.image,
+                fit: BoxFit.contain,
+              ),
+      ),
 
+      const SizedBox(height: 12),
+
+      // MINIATURAS DO PRODUTO (4 fotos)
+      SizedBox(
+        height: 60,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemCount: 4, // 4 miniaturas
+          separatorBuilder: (_, __) => const SizedBox(width: 8),
+          itemBuilder: (context, index) {
+            // aqui estou usando a mesma imagem para exemplo
+            // você pode substituir por product.images[index] se tiver lista de imagens
+            return Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.grey[400]!), // borda da miniatura
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: product.image.startsWith('http')
+                  ? Image.network(product.image, fit: BoxFit.cover)
+                  : Image.asset(product.image, fit: BoxFit.cover),
+            );
+          },
+        ),
+      ),
+   
               const SizedBox(height: 16),
 
+            
               Text(
                 product.name,
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF5A4633),
+                  color: Color.fromARGB(255, 201, 168, 97), // cor alterada
                 ),
               ),
 
               const SizedBox(height: 8),
 
+             
               Text(
                 "R\$ ${product.price.toStringAsFixed(2)}",
                 style: const TextStyle(
                   fontSize: 20,
-                  color: Colors.pink,
+                  color: Color.fromARGB(255, 187, 95, 58), // cor alterada
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -85,20 +126,20 @@ class ProductDetailPage extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 50),
 
               const Text(
                 "Produtos Relacionados",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF5A4633),
-                ),
+                  color: Color.fromARGB(255, 201, 168, 97),
+              ),
               ),
 
               const SizedBox(height: 16),
 
-              // CARROSSEL RESPONSIVO
+              
               LayoutBuilder(builder: (context, constraints) {
                 double itemWidth = constraints.maxWidth * 0.48;
 
