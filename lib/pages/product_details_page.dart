@@ -24,10 +24,10 @@ class ProductDetailPage extends StatelessWidget {
         title: Text(
           product.name,
           style: const TextStyle(
-            color:  Color.fromARGB(255, 165, 142, 66),
+            color:  Color.fromARGB(255, 80, 63, 8),
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 245, 227, 194),
+        backgroundColor: Color.fromARGB(255, 229, 208, 138),
       ),
       body: SingleChildScrollView(
 child: Padding(
@@ -90,7 +90,7 @@ child: Padding(
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 201, 168, 97), // cor alterada
+                  color:  Color.fromARGB(255, 68, 53, 4), // cor alterada
                 ),
               ),
 

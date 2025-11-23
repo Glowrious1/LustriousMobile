@@ -234,140 +234,140 @@ final List<Product> sampleProducts = [
     image: "assets/imagem_cabelo_shampoo.png",
     price: 35.0,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Limpa suavemente enquanto devolve a umidade natural aos fios. Ideal para cabelos secos ou ressecados, deixa o cabelo macio, sedoso e preparado para receber os próximos tratamentos da rotina capilar."
   ),
   Product(
     name: "Condicionador Nutritivo",
     image: "assets/imagem_cabelo_condicionador_1.png",
     price: 40.0,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Hidrata e desembaraça instantaneamente, deixando os fios mais leves, macios e alinhados. A fórmula nutritiva envolve o cabelo, selando as cutículas e proporcionando brilho intenso e toque aveludado."
   ),
   Product(
     name: "Máscara Capilar Reconstrução",
     image: "assets/imagem_cabelo_hidratante_1.png",
     price: 79.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Hidrata e desembaraça instantaneamente, deixando os fios mais leves, macios e alinhados. A fórmula nutritiva envolve o cabelo, selando as cutículas e proporcionando brilho intenso e toque aveludado."
   ),
   Product(
     name: "Óleo Capilar Argan",
     image: "assets/imagem_cabelo_oleo_1.png",
     price: 59.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Enriquecido com óleo de Argan puro, nutre profundamente, controla o frizz e devolve brilho imediato aos fios. Ideal para cabelos opacos ou ressecados, promove maciez intensa sem pesar e auxilia na reparação das pontas."
   ),
   Product(
     name: "Protetor Térmico ",
     image: "assets/imagem_cabelo_protetor_1.png",
     price: 49.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Protege os fios contra altas temperaturas, reduzindo danos causados por secador, chapinha e modelador. Cria uma película leve que evita quebra, frizz e ressecamento, mantendo o cabelo macio, alinhado e com brilho saudável."
   ),
     Product(
     name: "Shampoo Hidratante",
     image: "assets/imagem_cabelo_shampoo_2.png",
     price: 35.0,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Limpa suavemente sem ressecar. Devolve hidratação, maciez e brilho para cabelos secos ou opacos."
   ),
   Product(
     name: "Condicionador Nutritivo",
     image: "assets/imagem_cabelo_condicionador_2.png",
     price: 40.0,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Desembaraça, nutre e sela as cutículas. Proporciona maciez, brilho e fios mais suaves ao toque."
   ),
   Product(
     name: "Máscara Capilar Reconstrução",
     image: "assets/imagem_cabelo_hidratante_2.png",
     price: 79.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Repõe massa e fortalece os fios danificados. Deixa o cabelo mais resistente, encorpado e com brilho renovado."
   ),
   Product(
     name: "Óleo Capilar Argan",
     image: "assets/imagem_cabelo_oleo_2.png",
     price: 59.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Nutre profundamente e controla o frizz sem pesar. Devolve brilho imediato, maciez e repara pontas ressecadas."
   ),
   Product(
     name: "Protetor Térmico ",
     image: "assets/imagem_cabelo_protetor_2.png",
     price: 49.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Protege os fios do calor e reduz danos causados por secador e chapinha. Deixa o cabelo mais alinhado, resistente e sem frizz."
   ),
   Product(
     name: "Spray Texturizador",
     image: "assets/imagem_pele_serum_1.png",
     price: 39.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Cria ondas naturais e adiciona volume leve. Mantém os fios com textura bonita e aspecto praiano."
   ),
   Product(
     name: "Tônico Capilar Crescimento",
     image: "assets/imagem_pele_serum_2.png",
     price: 69.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Estimula a circulação do couro cabeludo e fortalece a raiz. Auxilia no crescimento e redução da queda."
   ),
   Product(
     name: "Shampoo Crystal Shine",
     image: "assets/imagem_cabelo_shampoo_3.png",
     price: 29.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Realça o brilho e limpa delicadamente. Deixa os fios luminosos, soltos e com toque suave."
   ),
   Product(
     name: "Condicionador Crystal Shine",
     image: "assets/imagem_cabelo_condicionador_3.png",
     price: 44.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Sela as cutículas e aumenta o brilho natural. Deixa os fios suaves, alinhados e radiantes."
   ),
   Product(
     name: "Óleo Nutri Glow",
     image: "assets/imagem_cabelo_oleo_3.png",
     price: 34.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Proporciona brilho radiante e nutrição intensa. Deixa o cabelo leve, sedoso e com aspecto iluminado."
   ),
   Product(
     name: "Shampoo Strength & Growth",
     image: "assets/imagem_cabelo_shampoo_4.png",
     price: 34.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Estimula o couro cabeludo e fortalece desde a raiz. Limpa suavemente enquanto ajuda no crescimento dos fios."
   ),
   Product(
     name: "Condicionador Strength & Growth",
     image: "assets/imagem_cabelo_condicionador_4.png",
     price: 34.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Fortalece os fios e reduz a quebra. Proporciona maciez enquanto estimula crescimento saudável."
   ),
   Product(
     name: "Óleo ",
     image: "assets/imagem_cabelo_oleo_4.png",
     price: 34.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Nutre profundamente, reduz frizz e devolve brilho imediato. Ideal para pontas ressecadas e toque suave."
   ),
   Product(
     name: "Shampoo para Cachos ",
     image: "assets/imagem_cabelo_shampoo_5.png",
     price: 34.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Limpa sem ressecar e ajuda na definição natural. Hidrata e mantém os cachos mais macios e disciplinados."
   ),
 Product(
     name: "Condicionador para Cachos",
     image: "assets/imagem_cabelo_condicionador_5.png",
     price: 34.9,
     category: "Cabelo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Define, hidrata e controla o frizz dos cachos. Deixa os fios macios, soltos e com movimento natural."
   ),
 
 
@@ -377,125 +377,125 @@ Product(
     image: "assets/imagem_corpo_hidratante_2.png",
     price: 59.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Hidrata por horas, deixando a pele macia e suave. Textura cremosa que espalha facilmente. Mantém a pele nutrida, protegida e perfumada."
   ),
    Product(
     name: "Bronzeador Corporal",
     image: "assets/imagem_corpo_bronzeador_1.png",
     price: 59.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Realça o tom natural com efeito dourado instantâneo. Deixa a pele luminosa e com aspecto saudável. Ideal para conquistar brilho de verão o ano inteiro."
   ),
   Product(
     name: "Óleo Corporal Perfumado",
     image: "assets/imagem_corpo_oleo_1.png",
     price: 69.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Nutre profundamente, deixando a pele macia e radiante. Fragrância elegante e duradoura que envolve o corpo. Absorve bem e realça o brilho natural."
   ),
     Product(
     name: "Spray Corporal",
     image: "assets/imagem_corpo_spray_1.png",
     price: 39.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Perfume leve para refrescar o corpo a qualquer hora. Ideal para ambientes quentes e para reaplicação durante o dia. Deixa sensação de frescor imediato."
   ),
    Product(
     name: "Esfoliante de Pé",
     image: "assets/imagem_corpo_esfoliante_1.png",
     price: 39.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Remove asperezas e calosidades sem agredir. Deixa os pés mais lisos, macios e hidratados. Perfeito para rotina de cuidados e prevenção de rachaduras."
   ),
   Product(
     name: "Sabonete Líquido Esfoliante",
     image: "assets/imagem_corpo_esfoliante_5.png",
     price: 34.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Esfolia suavemente, remove células mortas e impurezas. Deixa a pele mais lisa, renovada e com toque macio. Ideal para manter brilho e textura uniforme."
   ),
     Product(
     name: "Gel Corporal",
     image: "assets/imagem_corpo_gel_1.png",
     price: 39.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Textura leve que refresca imediatamente. Hidrata sem pesar e absorve rapidinho. Perfeito para dias quentes ou após o banho."
   ),
   Product(
     name: "Bory Splash",
     image: "assets/imagem_corpo_bory_1.png",
     price: 22.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Perfuma com suavidade e frescor ao longo do dia. Ótimo para reaplicar e manter a sensação de cuidado. Ideal para quem ama fragrâncias leves e aconchegantes."
   ),
   Product(
     name: "Bruma Loção Firmadora",
     image: "assets/imagem_corpo_bruma_1.png",
     price: 79.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Hidrata, tonifica e ofDestaca o brilho natural da pele com partículas luminosas. Proporciona efeito radiante imediato, ideal para eventos e fotos. Deixa a pele hidratada, uniforme e iluminada.erece sensação refrescante. Auxilia na firmeza da pele com uso contínuo. Deixa um toque suave, leve e agradavelmente perfumado."
   ),
   Product(
     name: "Iluminador Corporal",
     image: "assets/imagem_corpo_iluminador_1.png",
     price: 22.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Hidrata profundamente e recupera mãos ressecadas. Cria uma camada protetora sem deixar sensação pegajosa. Mantém as mãos macias, suaves e cheirosas por horas."
   ),
   Product(
     name: "Creme para Mãos",
     image: "assets/imagem_corpo_esfoliante_2.png",
     price: 24.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Fragrância leve e envolvente para usar a qualquer hora. Ideal para quem gosta de um perfume suave no dia a dia. Deixa a pele cheirosa, fresca e delicadamente perfumada."
   ),
   Product(
     name: "Mini Bory Splash",
     image: "assets/imagem_corpo_minibory_1.png",
     price: 54.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Fragrância leve e envolvente para usar a qualquer hora. Ideal para quem gosta de um perfume suave no dia a dia. Deixa a pele cheirosa, fresca e delicadamente perfumada."
   ),
   Product(
     name: "Esfoliante Corporal",
     image: "assets/imagem_corpo_esfoliante_4.png",
     price: 39.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Remove asperezas e devolve maciez com esfoliação suave. Estimula a renovação natural da pele, deixando-a mais uniforme. Perfeito para preparar o corpo para hidratantes e produtos iluminadores."
   ),
   Product(
     name: "Spray Hidratante Pós-Sol",
     image: "assets/imagem_corpo_hidratante_3.png",
     price: 44.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Acalma a pele após exposição ao sol, proporcionando hidratação imediata. Deixa sensação refrescante e ajuda a recuperar o conforto da pele. Ideal para manter o bronze bonito e a pele saudável."
   ),
   Product(
     name: "Perfume Body Splash",
     image: "assets/imagem_corpo_bory_2.png",
     price: 89.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Perfuma delicadamente com aroma leve e duradouro. Ideal para quem gosta de fragrâncias frescas e confortáveis. Mantém a pele cheirosa ao longo do dia com sensação de leveza."
   ),
   Product(
     name: "Mini Body Splash",
     image: "assets/imagem_corpo_minibory_2.png",
     price: 89.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Fragrância suave e refrescante perfeita para o dia a dia. Proporciona sensação de frescor imediato e pode ser reaplicado sempre que desejar. Ideal para carregar na bolsa e manter-se perfumada."
   ),
    Product(
     name: "Esfoliante Corporal",
     image: "assets/imagem_corpo_esfoliante_3.png",
     price: 39.9,
     category: "Corpo",
-    description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+    description: "Remove células mortas e impurezas, deixando a pele mais lisa e uniforme. Proporciona toque macio e aparência renovada desde a primeira aplicação. Prepara a pele para hidratação mais eficiente."
   ),
     Product(
     name: "Shimmer Glow Corporal",
     image: "assets/imagem_corpo_shimmer_1.png",
     price: 39.9,
     category: "Corpo",
-    description: "O Creme oferece hidratação profunda e toque suave, deixando a pele mais macia e protegida ao longo do dia. Sua fórmula leve é rapidamente absorvida e ajuda a manter a umidade natural."
+    description: "Ilumina a pele com partículas de brilho intenso e acabamento luminoso. Hidrata enquanto destaca o tom natural, deixando um glow radiante e sofisticado. Ideal para eventos, fotos e uso diário para realçar a pele."
   ),
 ];

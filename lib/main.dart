@@ -84,7 +84,6 @@ drawer: Drawer(
         accountEmail: Text("$userName@gmail.com"),
       ),
 
-      // ⭐ CATEGORIAS SEM ÍCONES
       ListTile(
         title: const Text(
           "Pele",
@@ -305,14 +304,18 @@ drawer: Drawer(
                       );
                     }).toList(),
                   ),
+const SizedBox(height: 20),
+Container(
+  margin: EdgeInsets.zero,
+  padding: EdgeInsets.zero,
+  width: MediaQuery.of(context).size.width,
+  child: Image.asset(
+    "assets/imagem_produtos.png",
+    width: double.infinity,
+    fit: BoxFit.cover, 
+  ),
+),
 
-                  const SizedBox(height: 20),
-
-                  Image.asset(
-                    "assets/imagem_produtos.png",
-                    width: double.infinity,
-                    fit: BoxFit.fitWidth,
-                  ),
                 ],
               ),
             ),
