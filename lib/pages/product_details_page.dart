@@ -107,39 +107,48 @@ child: Padding(
               ),
 
               const SizedBox(height: 20),
+ SizedBox(
+  width: double.infinity,
+  child: ElevatedButton(
+    onPressed: () {},
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFFB89E5C),
+      padding: const EdgeInsets.symmetric(vertical: 14),
+    ),
+    child: const Text(
+      "Adicionar ao carrinho",
+      style: TextStyle(
+        fontSize: 18,
+        color: Colors.white,
+      ),
+    ),
+  ),
+),
 
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFB89E5C),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                  ),
-                  child: const Text(
-                    "Adicionar ao carrinho",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
+const SizedBox(height: 20),
 
+Text(
+  "Descrição do Produto",
+  textAlign: TextAlign.center,
+  style: TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: Color.fromARGB(255, 68, 53, 4),
+  ),
+),
+
+const SizedBox(height: 8),
+
+Text(
+  product.description,
+  style: const TextStyle(
+    fontSize: 16,
+    color: Color.fromARGB(221, 117, 69, 10),
+    height: 1.4,
+  ),
+),
               const SizedBox(height: 50),
 
-              const Text(
-                "Produtos Relacionados",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 201, 168, 97),
-              ),
-              ),
-
-              const SizedBox(height: 16),
-
-              
               LayoutBuilder(builder: (context, constraints) {
                 double itemWidth = constraints.maxWidth * 0.48;
 

@@ -48,66 +48,111 @@ class HomePage extends StatelessWidget {
         image: "assets/imagem_pele_creme_1.png",
         price: 39.90,
         category: "Pele",
+         description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
       ),
       Product(
         name: "Gloss - Rosé Glow",
         image: "assets/imagem_rosto_gloss_1.png",
         price: 49.90,
         category: "Rosto",
+         description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
       ),
       Product(
         name: "Blush em Pó",
         image: "assets/imagem_rosto_blush_pó_1.png",
         price: 59.90,
         category: "Rosto",
+         description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
       ),
     ];
 
     return Scaffold(
       key: _scaffoldKey,
+drawer: Drawer(
+  backgroundColor: const Color.fromARGB(255, 255, 236, 200).withOpacity(0.95),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      UserAccountsDrawerHeader(
+        decoration: const BoxDecoration(
+          color: Color(0xFF5A4633),
+        ),
+        accountName: Text(
+          userName,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        accountEmail: Text("$userName@gmail.com"),
+      ),
 
-      drawer: Drawer(
-        backgroundColor: const Color.fromARGB(255, 255, 236, 200).withOpacity(0.95),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            UserAccountsDrawerHeader(
-              decoration: const BoxDecoration(
-                color: Color(0xFF5A4633),
-              ),
-              accountName: Text(
-                userName,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              accountEmail: Text("$userName@gmail.com"),
+      // ⭐ CATEGORIAS SEM ÍCONES
+      ListTile(
+        title: const Text(
+          "Pele",
+          style: TextStyle(fontSize: 18),
+        ),
+        onTap: () {
+          Navigator.pushNamed(context, '/products', arguments: "Pele");
+        },
+      ),
+
+      ListTile(
+        title: const Text(
+          "Cabelo",
+          style: TextStyle(fontSize: 18),
+        ),
+        onTap: () {
+          Navigator.pushNamed(context, '/products', arguments: "Cabelo");
+        },
+      ),
+
+      ListTile(
+        title: const Text(
+          "Rosto",
+          style: TextStyle(fontSize: 18),
+        ),
+        onTap: () {
+          Navigator.pushNamed(context, '/products', arguments: "Rosto");
+        },
+      ),
+
+      ListTile(
+        title: const Text(
+          "Corpo",
+          style: TextStyle(fontSize: 18),
+        ),
+        onTap: () {
+          Navigator.pushNamed(context, '/products', arguments: "Corpo");
+        },
+      ),
+
+      const Spacer(),
+
+      Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const Login()),
+            );
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 190, 154, 55),
+            minimumSize: const Size(double.infinity, 50),
+          ),
+          child: const Text(
+            "Sair da conta",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (_) => const Login()),
-                  );
-                },
-                icon: const Icon(Icons.logout, color: Colors.white),
-                label: const Text(
-                  "Sair da conta",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 190, 154, 55),
-                  minimumSize: const Size(double.infinity, 50),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
+    ],
+  ),
+),
+
 
       body: Container(
         decoration: const BoxDecoration(
