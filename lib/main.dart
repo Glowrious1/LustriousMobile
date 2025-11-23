@@ -48,21 +48,21 @@ class HomePage extends StatelessWidget {
         image: "assets/imagem_pele_creme_1.png",
         price: 39.90,
         category: "Pele",
-         description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+         description: "Remove células mortas e impurezas, deixando a pele mais lisa e uniforme. Proporciona toque macio e aparência renovada desde a primeira aplicação."
       ),
       Product(
         name: "Gloss - Rosé Glow",
         image: "assets/imagem_rosto_gloss_1.png",
         price: 49.90,
         category: "Rosto",
-         description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+         description: "Remove células mortas e impurezas, deixando a pele mais lisa e uniforme. Proporciona toque macio e aparência renovada desde a primeira aplicação."
       ),
       Product(
         name: "Blush em Pó",
         image: "assets/imagem_rosto_blush_pó_1.png",
         price: 59.90,
         category: "Rosto",
-         description: "Sérum concentrado com ação rejuvenescedora que melhora a firmeza, suaviza linhas finas e revitaliza a textura da pele. A fórmula leve penetra rapidamente, estimulando renovação celular e oferecendo hidratação prolongada. Deixa a pele com aparência mais jovem, uniforme e iluminada."
+         description: "Remove células mortas e impurezas, deixando a pele mais lisa e uniforme. Proporciona toque macio e aparência renovada desde a primeira aplicação."
       ),
     ];
 
