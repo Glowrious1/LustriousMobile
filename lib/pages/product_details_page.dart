@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../widgets/product_card.dart';
+import 'package:app_lustrious/pages/cart_page.dart';
 import 'dart:math';
 
 class ProductDetailPage extends StatelessWidget {
@@ -128,7 +129,14 @@ class ProductDetailPage extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CartPage(product: product),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFB89E5C),
                       padding: const EdgeInsets.symmetric(vertical: 14),

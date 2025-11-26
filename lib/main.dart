@@ -5,6 +5,7 @@ import 'package:app_lustrious/pages/product_list_page.dart';
 import 'package:app_lustrious/pages/product_details_page.dart';
 import 'package:app_lustrious/widgets/category_carrossel.dart';
 import 'package:app_lustrious/models/product.dart';
+import 'packages:app_lustrious/pages/cart_page.dart';
 
 void main() {
   runApp(const MyApp());
