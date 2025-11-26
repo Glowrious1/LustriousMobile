@@ -5,6 +5,7 @@ import '../models/product_data.dart';
 
 class HomePage extends StatelessWidget {
   final String? userName;
+
   const HomePage({super.key, this.userName});
 
   @override
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFFF9F5F0),
+
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -27,10 +29,12 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -80,6 +84,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
+
                 const CategoryCarrossel(),
 
                 const SizedBox(height: 25),
@@ -93,7 +98,8 @@ class HomePage extends StatelessWidget {
                     color: Colors.black87,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
+
                 BestSellerCarrossel(products: bestSellers),
               ],
             ),

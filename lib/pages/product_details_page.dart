@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../widgets/product_card.dart';
-import 'package:app_lustrious/pages/cart_page.dart';
+import '../provider/cart_provider.dart';
+import 'cart_page.dart';
 import 'dart:math';
 
 class ProductDetailPage extends StatelessWidget {
@@ -12,9 +14,31 @@ class ProductDetailPage extends StatelessWidget {
     final Product product =
         ModalRoute.of(context)!.settings.arguments as Product;
 
-    List<Product> relatedProducts = sampleProducts
-        .where((p) => p.name != product.name)
-        .toList();
+    /// EXEMPLO DE LISTA PARA "RELACIONADOS"
+    /// Você pode substituir pelo seu próprio array real.
+    List<Product> sampleProducts = [
+      Product(
+        name: "Hidratante Facial",
+        image: "assets/imagem_pele_creme_1.png",
+        price: 39.90,
+        description: "Hidratação profunda para todos os tipos de pele.",
+      ),
+      Product(
+        name: "Gloss Rosé Glow",
+        image: "assets/imagem_rosto_gloss_1.png",
+        price: 49.90,
+        description: "Brilho suave com efeito glow.",
+      ),
+      Product(
+        name: "Blush em Pó",
+        image: "assets/imagem_rosto_blush_pó_1.png",
+        price: 59.90,
+        description: "Blush confortável com longa duração.",
+      ),
+    ];
+
+    List<Product> relatedProducts =
+        sampleProducts.where((p) => p.name != product.name).toList();
 
     relatedProducts.shuffle(Random());
     relatedProducts = relatedProducts.take(2).toList();
@@ -23,9 +47,7 @@ class ProductDetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           product.name,
-          style: const TextStyle(
-            color: Color.fromARGB(255, 3, 3, 1),
-          ),
+          style: const TextStyle(color: Colors.black87),
         ),
         backgroundColor: Colors.white,
         leading: IconButton(
@@ -37,10 +59,7 @@ class ProductDetailPage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color(0xFFFDF3E7),
-              Color.fromARGB(255, 255, 241, 216),
-            ],
+            colors: [Color(0xFFFDF3E7), Color(0xFFFFF1D8)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -52,8 +71,7 @@ class ProductDetailPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
-                // IMAGEM PRINCIPAL COM LUPA
+                /// 📸 IMAGEM PRINCIPAL
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -70,70 +88,49 @@ class ProductDetailPage extends StatelessWidget {
                       color: Colors.grey[200],
                     ),
                     clipBehavior: Clip.antiAlias,
-                    child: product.image.startsWith('http')
-                        ? Image.network(product.image, fit: BoxFit.contain)
-                        : Image.asset(product.image, fit: BoxFit.contain),
-                  ),
-                ),
-
-                const SizedBox(height: 12),
-
-                // MINIATURAS
-                SizedBox(
-                  height: 60,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 4,
-                    separatorBuilder: (_, __) => const SizedBox(width: 8),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.grey[400]!),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        child: product.image.startsWith('http')
-                            ? Image.network(product.image, fit: BoxFit.cover)
-                            : Image.asset(product.image, fit: BoxFit.cover),
-                      );
-                    },
+                    child: Image.asset(
+                      product.image,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
 
                 const SizedBox(height: 16),
 
+                /// ⭐ TÍTULO
                 Text(
                   product.name,
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 68, 53, 4),
+                    color: Color(0xFF5A4633),
                   ),
                 ),
 
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
 
                 Text(
                   "R\$ ${product.price.toStringAsFixed(2)}",
                   style: const TextStyle(
                     fontSize: 20,
-                    color: Color.fromARGB(255, 170, 87, 55),
                     fontWeight: FontWeight.bold,
+                    color: Color(0xFFAF7046),
                   ),
                 ),
 
                 const SizedBox(height: 20),
 
+                /// 🛒 BOTÃO DE COMPRAR
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
+                      context.read<CartProvider>().add(product);
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CartPage(product: product),
+                          builder: (context) => const CartPage(),
                         ),
                       );
                     },
@@ -148,15 +145,15 @@ class ProductDetailPage extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 25),
 
-                Text(
+                /// 📘 DESCRIÇÃO
+                const Text(
                   "Descrição do Produto",
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 57, 44, 3),
+                    color: Color(0xFF4A3A1A),
                   ),
                 ),
 
@@ -166,13 +163,14 @@ class ProductDetailPage extends StatelessWidget {
                   product.description,
                   style: const TextStyle(
                     fontSize: 16,
-                    color: Color.fromARGB(255, 89, 68, 0),
                     height: 1.4,
+                    color: Color(0xFF5E4A1A),
                   ),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 40),
 
+                /// ⭐ PRODUTOS RELACIONADOS
                 LayoutBuilder(
                   builder: (context, constraints) {
                     double itemWidth = constraints.maxWidth * 0.48;
@@ -186,7 +184,9 @@ class ProductDetailPage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return SizedBox(
                             width: itemWidth,
-                            child: ProductCard(product: relatedProducts[index]),
+                            child: ProductCard(
+                              product: relatedProducts[index],
+                            ),
                           );
                         },
                       ),
@@ -202,7 +202,7 @@ class ProductDetailPage extends StatelessWidget {
   }
 }
 
-// LUPA COM FUNDO TRANSPARENTE E SETA DE VOLTAR
+/// 🔍 LUPA / ZOOM
 class ImageMagnifier extends StatefulWidget {
   final String image;
 
@@ -219,36 +219,31 @@ class _ImageMagnifierState extends State<ImageMagnifier> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent, // fundo totalmente transparente
+      backgroundColor: Colors.transparent,
 
       body: GestureDetector(
-        onPanStart: (details) {
+        onPanStart: (d) {
           setState(() {
             show = true;
-            position = details.localPosition;
+            position = d.localPosition;
           });
         },
-        onPanUpdate: (details) {
-          setState(() {
-            position = details.localPosition;
-          });
+        onPanUpdate: (d) {
+          setState(() => position = d.localPosition);
         },
-        onPanEnd: (_) {
-          setState(() => show = false);
-        },
+        onPanEnd: (_) => setState(() => show = false),
+
         child: Stack(
           children: [
             Center(
               child: InteractiveViewer(
-                minScale: 1,
                 maxScale: 4,
-                child: widget.image.startsWith('http')
-                    ? Image.network(widget.image)
-                    : Image.asset(widget.image),
+                minScale: 1,
+                child: Image.asset(widget.image),
               ),
             ),
 
-            // ⭐ LUPA REAL
+            /// LUPA
             if (show)
               Positioned(
                 left: position.dx - 75,
@@ -261,31 +256,29 @@ class _ImageMagnifierState extends State<ImageMagnifier> {
                       scale: 2.5,
                       child: Transform.translate(
                         offset: Offset(-position.dx, -position.dy),
-                        child: widget.image.startsWith('http')
-                            ? Image.network(widget.image)
-                            : Image.asset(widget.image),
+                        child: Image.asset(widget.image),
                       ),
                     ),
                   ),
                 ),
               ),
 
-            // 🔙 SETA DE VOLTAR
+            /// VOLTAR
             Positioned(
               top: 40,
               left: 16,
               child: GestureDetector(
                 onTap: () => Navigator.pop(context),
                 child: Container(
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5), // leve fundo para destacar a seta
+                    color: Colors.white.withOpacity(0.5),
                     shape: BoxShape.circle,
                   ),
-                  padding: const EdgeInsets.all(8),
                   child: const Icon(Icons.arrow_back, color: Colors.black),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
