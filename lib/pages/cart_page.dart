@@ -11,13 +11,13 @@ class CartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Carrinho"),
+        title: const Text("Sacola"),
       ),
 
       body: cart.items.isEmpty
           ? const Center(
               child: Text(
-                "Seu carrinho está vazio",
+                "Seu sacola está vazia",
                 style: TextStyle(fontSize: 18),
               ),
             )

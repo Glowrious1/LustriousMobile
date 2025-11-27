@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:app_lustrious/pages/login_page.dart';
 import 'package:app_lustrious/pages/pagina_cadastro.dart';
 import 'package:app_lustrious/pages/product_list_page.dart';
 import 'package:app_lustrious/pages/product_details_page.dart';
 import 'package:app_lustrious/pages/cart_page.dart';
+import 'package:app_lustrious/pages/favorites_page.dart';
 
 import 'package:app_lustrious/widgets/category_carrossel.dart';
+
 import 'package:app_lustrious/models/product.dart';
+
 import 'package:app_lustrious/provider/cart_provider.dart';
+import 'package:app_lustrious/provider/favorites_provider.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => CartProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => FavoritesProvider()),
+      ],
       child: const MyApp(),
     ),
   );
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,6 +38,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
+      
       routes: {
         '/': (context) => const Login(),
         '/home': (context) => HomePage(),
@@ -35,6 +46,7 @@ class MyApp extends StatelessWidget {
         '/cadastro': (context) => const Cadastro(),
         '/product-details': (context) => const ProductDetailPage(),
         '/cart': (context) => const CartPage(),
+        '/favorites': (context) => const FavoritesPage(),
       },
     );
   }
@@ -119,6 +131,18 @@ class HomePage extends StatelessWidget {
               title: const Text("Corpo", style: TextStyle(fontSize: 18)),
               onTap: () => Navigator.pushNamed(context, '/products',
                   arguments: "Corpo"),
+            ),
+
+            ListTile(
+              title: const Text("Sacola", style: TextStyle(fontSize:18)),
+              onTap: () => Navigator.pushNamed(context, '/cart',
+              arguments: "Carrinho"),
+            ),
+
+            ListTile(
+              title: const Text("Favoritos", style: TextStyle(fontSize:18)),
+              onTap: () => Navigator.pushNamed(context, '/favorites',
+              arguments: "Favoritos"),
             ),
 
             const Spacer(),

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../widgets/product_card.dart';
 import '../provider/cart_provider.dart';
+import '../provider/favorites_provider.dart';
 import 'cart_page.dart';
 import 'dart:math';
 
@@ -14,31 +15,9 @@ class ProductDetailPage extends StatelessWidget {
     final Product product =
         ModalRoute.of(context)!.settings.arguments as Product;
 
-    /// EXEMPLO DE LISTA PARA "RELACIONADOS"
-    /// Você pode substituir pelo seu próprio array real.
-    List<Product> sampleProducts = [
-      Product(
-        name: "Hidratante Facial",
-        image: "assets/imagem_pele_creme_1.png",
-        price: 39.90,
-        description: "Hidratação profunda para todos os tipos de pele.",
-      ),
-      Product(
-        name: "Gloss Rosé Glow",
-        image: "assets/imagem_rosto_gloss_1.png",
-        price: 49.90,
-        description: "Brilho suave com efeito glow.",
-      ),
-      Product(
-        name: "Blush em Pó",
-        image: "assets/imagem_rosto_blush_pó_1.png",
-        price: 59.90,
-        description: "Blush confortável com longa duração.",
-      ),
-    ];
-
-    List<Product> relatedProducts =
-        sampleProducts.where((p) => p.name != product.name).toList();
+   List<Product> relatedProducts = sampleProducts
+    .where((p) => p.name != product.name)
+    .toList();
 
     relatedProducts.shuffle(Random());
     relatedProducts = relatedProducts.take(2).toList();
@@ -98,14 +77,34 @@ class ProductDetailPage extends StatelessWidget {
                 const SizedBox(height: 16),
 
                 /// ⭐ TÍTULO
-                Text(
-                  product.name,
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF5A4633),
-                  ),
-                ),
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Text(
+      product.name,
+      style: const TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.bold,
+        color: Color(0xFF5A4633),
+      ),
+    ),
+
+    Consumer<FavoritesProvider>(
+      builder: (context, fav, child) {
+        final isFav = fav.isFavorite(product);
+
+        return IconButton(
+          icon: Icon(
+            isFav ? Icons.favorite : Icons.favorite_border,
+            color: Colors.red,
+            size: 30,
+          ),
+          onPressed: () => fav.toggleFavorite(product),
+        );
+      },
+    ),
+  ],
+),
 
                 const SizedBox(height: 10),
 
@@ -139,7 +138,7 @@ class ProductDetailPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 14),
                     ),
                     child: const Text(
-                      "Adicionar ao carrinho",
+                      "Adicionar a sacola",
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),

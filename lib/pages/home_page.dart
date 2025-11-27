@@ -28,7 +28,20 @@ class HomePage extends StatelessWidget {
             letterSpacing: 1,
           ),
         ),
-      ),
+     
+actions: [
+  IconButton(
+    icon: const Icon(Icons.favorite, color: Colors.red),
+    onPressed: () => Navigator.pushNamed(context, '/favorites'),
+  ),
+  IconButton(
+    icon: const Icon(Icons.shopping_cart, color: Colors.black),
+    onPressed: () => Navigator.pushNamed(context, '/cart'),
+  ),
+],
+
+    ),
+
 
       body: SafeArea(
         child: SingleChildScrollView(
