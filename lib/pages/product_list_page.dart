@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 
-
 class ProductsPage extends StatelessWidget {
   const ProductsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final String? category =
-        ModalRoute.of(context)!.settings.arguments as String?;
 
+    // ------------------------------
+    // RECEBENDO ARGUMENTOS
+    // ------------------------------
+    final args = ModalRoute.of(context)!.settings.arguments;
+
+    String? category;
+    List<Product>? searchList;
+    String? customTitle;
+
+    if (args is String) {
+      category = args; // veio de categoria
+    } else if (args is Map) {
+      customTitle = args["title"];
+      searchList = args["list"];
+    }
+
+    // ------------------------------
+    // BANNERS POR CATEGORIA
+    // ------------------------------
     final Map<String, String> categoryBanners = {
       "Pele": "assets/imagens_baner_2.png",
       "Rosto": "assets/imagens_baner_1.png",
@@ -17,13 +33,27 @@ class ProductsPage extends StatelessWidget {
       "Corpo": "assets/imagens_baner_3.png",
     };
 
-    final bannerImage = categoryBanners[category] ?? "";
+    final bannerImage = searchList == null
+        ? categoryBanners[category] ?? ""
+        : ""; // não mostrar banner em pesquisas
 
-   final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenWidth = MediaQuery.of(context).size.width;
 
-    final filteredProducts =
-        sampleProducts.where((p) => p.category == category).toList();
+    // ------------------------------
+    // FILTRO OU LISTA DA PESQUISA
+    // ------------------------------
+    late final List<Product> filteredProducts;
 
+    if (searchList != null) {
+      filteredProducts = searchList!;
+    } else {
+      filteredProducts =
+          sampleProducts.where((p) => p.category == category).toList();
+    }
+
+    // ------------------------------
+    // CATEGORIAS
+    // ------------------------------
     final List<Map<String, String>> categories = [
       {"name": "Pele", "image": "assets/imagem_pele_1.jpg"},
       {"name": "Rosto", "image": "assets/imagem_rosto.jpg"},
@@ -31,8 +61,13 @@ class ProductsPage extends StatelessWidget {
       {"name": "Corpo", "image": "assets/imagem_corpo_1.jpg"},
     ];
 
-    final otherCategories =
-        categories.where((c) => c["name"] != category).toList();
+    final otherCategories = searchList != null
+        ? [] // se veio da pesquisa, não mostrar categorias sugeridas
+        : categories.where((c) => c["name"] != category).toList();
+
+    // ------------------------------
+    // LAYOUT
+    // ------------------------------
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -45,7 +80,7 @@ class ProductsPage extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text(
-          category ?? "Produtos",
+          customTitle ?? category ?? "Produtos",
           style: const TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.w300,
@@ -69,6 +104,9 @@ class ProductsPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              // ------------------------------
+              // BANNER (somente para CATEGORIAS)
+              // ------------------------------
               if (bannerImage.isNotEmpty)
                 ClipRRect(
                   borderRadius: const BorderRadius.vertical(
@@ -89,69 +127,75 @@ class ProductsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                  
                     const SizedBox(height: 12),
 
-                    SizedBox(
-                      height: screenWidth * 0.32,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: otherCategories.length,
-                        separatorBuilder: (_, __) =>
-                            const SizedBox(width: 14),
-                        itemBuilder: (context, index) {
-                          final c = otherCategories[index];
+                    // ------------------------------
+                    // CATEGORIAS (não aparece na pesquisa)
+                    // ------------------------------
+                    if (otherCategories.isNotEmpty)
+                      SizedBox(
+                        height: screenWidth * 0.32,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: otherCategories.length,
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(width: 14),
+                          itemBuilder: (context, index) {
+                            final c = otherCategories[index];
 
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                '/products',
-                                arguments: c["name"],
-                              );
-                            },
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(16),
-                                  child: Image.asset(
-                                    c["image"]!,
-                                    width: screenWidth * 0.28,
-                                    height: screenWidth * 0.28,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-
-                                Positioned(
-                                  bottom: screenWidth * 0.06,
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 4,
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  '/products',
+                                  arguments: c["name"],
+                                );
+                              },
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(16),
+                                    child: Image.asset(
+                                      c["image"]!,
+                                      width: screenWidth * 0.28,
+                                      height: screenWidth * 0.28,
+                                      fit: BoxFit.cover,
                                     ),
-                                    child: Text(
-                                      c["name"]!,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
+                                  ),
+                                  Positioned(
+                                    bottom: screenWidth * 0.06,
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                        vertical: 4,
+                                      ),
+                                      child: Text(
+                                        c["name"]!,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
 
               const SizedBox(height: 40),
-                Padding(
+
+              // ------------------------------
+              // GRID DE PRODUTOS
+              // ------------------------------
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: filteredProducts.isEmpty
                     ? const Text(

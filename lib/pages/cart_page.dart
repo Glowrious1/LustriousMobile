@@ -30,7 +30,7 @@ class CartPage extends StatelessWidget {
                       final item = cart.items[index];
 
                       return ListTile(
-                        leading: Image.network(item.product.image, width: 60),
+                        leading: Image.asset(item.product.image, width: 60),
                         title: Text(item.product.name),
                         subtitle: Text(
                           "R\$ ${(item.product.price * item.quantity).toStringAsFixed(2)}",
@@ -77,7 +77,9 @@ class CartPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                            Navigator.pushNamed(context, '/checkout');
+                        },
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(double.infinity, 50),
                         ),

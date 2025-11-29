@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'package:app_lustrious/pages/login_page.dart';
-import 'package:app_lustrious/pages/pagina_cadastro.dart';
-import 'package:app_lustrious/pages/product_list_page.dart';
-import 'package:app_lustrious/pages/product_details_page.dart';
-import 'package:app_lustrious/pages/cart_page.dart';
-import 'package:app_lustrious/pages/favorites_page.dart';
+import '../pages/login_page.dart';
+import '../pages/pagina_cadastro.dart';
+import '../pages/product_list_page.dart';
+import '../pages/product_details_page.dart';
+import '../pages/cart_page.dart';
+import '../pages/favorites_page.dart';
+import '../pages/checkout_page.dart';
 
-import 'package:app_lustrious/widgets/category_carrossel.dart';
+import '../widgets/category_carrossel.dart';
 
 import 'package:app_lustrious/models/product.dart';
+import 'package:app_lustrious/models/product_data.dart' hide sampleProducts;
 
-import 'package:app_lustrious/provider/cart_provider.dart';
-import 'package:app_lustrious/provider/favorites_provider.dart';
+
+import '../provider/cart_provider.dart';
+import '../provider/favorites_provider.dart';
 import 'package:provider/provider.dart';
-
 
 void main() {
   runApp(
@@ -28,8 +30,6 @@ void main() {
   );
 }
 
-
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      
       routes: {
         '/': (context) => const Login(),
         '/home': (context) => HomePage(),
@@ -47,6 +46,8 @@ class MyApp extends StatelessWidget {
         '/product-details': (context) => const ProductDetailPage(),
         '/cart': (context) => const CartPage(),
         '/favorites': (context) => const FavoritesPage(),
+        '/checkout': (context) => const CheckoutPage(),
+
       },
     );
   }
@@ -56,6 +57,7 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +96,7 @@ class HomePage extends StatelessWidget {
       key: _scaffoldKey,
       backgroundColor: const Color(0xFFFDF3E7),
 
-      // --------------------- MENU LATERAL ---------------------
+      // MENU LATERAL
       drawer: Drawer(
         backgroundColor:
             const Color.fromARGB(255, 255, 236, 200).withOpacity(0.95),
@@ -114,35 +116,33 @@ class HomePage extends StatelessWidget {
             // Categorias
             ListTile(
               title: const Text("Pele", style: TextStyle(fontSize: 18)),
-              onTap: () => Navigator.pushNamed(context, '/products',
-                  arguments: "Pele"),
+              onTap: () =>
+                  Navigator.pushNamed(context, '/products', arguments: "Pele"),
             ),
             ListTile(
               title: const Text("Cabelo", style: TextStyle(fontSize: 18)),
-              onTap: () => Navigator.pushNamed(context, '/products',
-                  arguments: "Cabelo"),
+              onTap: () =>
+                  Navigator.pushNamed(context, '/products', arguments: "Cabelo"),
             ),
             ListTile(
               title: const Text("Rosto", style: TextStyle(fontSize: 18)),
-              onTap: () => Navigator.pushNamed(context, '/products',
-                  arguments: "Rosto"),
+              onTap: () =>
+                  Navigator.pushNamed(context, '/products', arguments: "Rosto"),
             ),
             ListTile(
               title: const Text("Corpo", style: TextStyle(fontSize: 18)),
-              onTap: () => Navigator.pushNamed(context, '/products',
-                  arguments: "Corpo"),
+              onTap: () =>
+                  Navigator.pushNamed(context, '/products', arguments: "Corpo"),
             ),
 
             ListTile(
-              title: const Text("Sacola", style: TextStyle(fontSize:18)),
-              onTap: () => Navigator.pushNamed(context, '/cart',
-              arguments: "Carrinho"),
+              title: const Text("Sacola", style: TextStyle(fontSize: 18)),
+              onTap: () => Navigator.pushNamed(context, '/cart'),
             ),
 
             ListTile(
-              title: const Text("Favoritos", style: TextStyle(fontSize:18)),
-              onTap: () => Navigator.pushNamed(context, '/favorites',
-              arguments: "Favoritos"),
+              title: const Text("Favoritos", style: TextStyle(fontSize: 18)),
+              onTap: () => Navigator.pushNamed(context, '/favorites'),
             ),
 
             const Spacer(),
@@ -173,7 +173,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
 
-      // --------------------- TELA ---------------------
+      // TELA
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -193,7 +193,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // --------------------- HEADER ---------------------
+                  // HEADER
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -238,12 +238,46 @@ class HomePage extends StatelessWidget {
 
                   const SizedBox(height: 25),
 
-                  // --------------------- CATEGORIAS ---------------------
+                  // 🔍 BARRA DE PESQUISA
+                  TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: "Buscar produtos...",
+                      prefixIcon: const Icon(Icons.search),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    onSubmitted: (value) {
+                      if (value.trim().isEmpty) return;
+
+                      final results = sampleProducts
+                          .where((p) =>
+                              p.name.toLowerCase().contains(value.toLowerCase()))
+                          .toList();
+
+                      Navigator.pushNamed(
+                        context,
+                        '/products',
+                        arguments: {
+                          "title": "Resultados",
+                          "list": results,
+                        },
+                      );
+                    },
+                  ),
+
+                  const SizedBox(height: 25),
+
+                  // CATEGORIAS
                   const CategoryCarrossel(),
 
                   const SizedBox(height: 30),
 
-                  // --------------------- OFERTAS ---------------------
+                  // OFERTAS
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: ofertas.map((product) {
@@ -325,7 +359,7 @@ class HomePage extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  // Imagem inferior
+                  // IMAGEM FINAL
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: Image.asset(
